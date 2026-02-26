@@ -50,6 +50,7 @@ class ItemService
     {
         try {
             $item = $this->repo->getById($id);
+
             if ($item) {
                 $result = new Ok($item);
             } else {
