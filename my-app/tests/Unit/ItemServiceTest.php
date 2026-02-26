@@ -5,12 +5,10 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Mockery;
 use App\Services\Api\V1\Item\ItemService;
-use App\Repositories\Api\V1\interfaces\ItemRepositoryInterface;
+use App\Repositories\Api\V1\Interfaces\ItemRepositoryInterface;
 use App\DTO\Api\V1\ItemDTO;
 use App\Models\Item;
 use PHPUnit\Framework\Attributes\Test;
-use Prewk\Result\Ok;
-use Prewk\Result\Err;
 
 class ItemServiceTest extends TestCase
 {
