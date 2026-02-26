@@ -118,7 +118,7 @@ Accept: application/json
 }
 
 ```
-##  Response (Success)
+###  Response (Success)
 
 ```
 {
@@ -128,7 +128,7 @@ Accept: application/json
 
 ```
 
-## Response (Error)
+### Response (Error)
 
 ```
 {
