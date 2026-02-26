@@ -59,7 +59,7 @@ php artisan serve
 | POST   | `/v1/item/create`      | Create item     |
 | GET    | `/v1/items`            | List items      |
 | GET    | `/v1/items/{id}`       | Show single item|
-| PUT    | `/v1/items/{id}`       | Update item     |
+| PATCH  | `/v1/items/{id}`       | Update item     |
 | DELETE | `/v1/items/{id}`       | Delete item     |
 
 **Headers for API requests:**
