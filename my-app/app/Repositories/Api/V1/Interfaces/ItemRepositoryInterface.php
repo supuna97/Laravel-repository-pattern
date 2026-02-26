@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Api\V1\Interfaces;
 
 use App\Models\Item;
