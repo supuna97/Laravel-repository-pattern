@@ -4,6 +4,7 @@ namespace App\Repositories\Api\V1\Implementations;
 
 use App\Models\Item;
 use App\Repositories\Api\V1\Interfaces\ItemRepositoryInterface;
+use Illuminate\Support\Collection;
 
 class ItemRepository implements ItemRepositoryInterface
 {
@@ -13,9 +14,9 @@ class ItemRepository implements ItemRepositoryInterface
         return Item::create($data);
     }
 
-    public function getAll(): array
+    public function getAll(): Collection
     {
-        return Item::all()->toArray();
+        return Item::all();
     }
 
     public function getById(int $id): ?Item
