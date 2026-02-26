@@ -1,4 +1,4 @@
-# Laravel API Using modern repository architecture design pattern
+# Laravel API using modern repository architecture design pattern
 
 A **Laravel 12 API project** demonstrating clean architecture using **Controller → DTO → Service → Repository/Interface → Model → Routes**.  
 Designed for beginners to learn **OOP, layered architecture, and API best practices**.
