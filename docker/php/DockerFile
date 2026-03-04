@@ -1,0 +1,25 @@
+FROM php:8.3-fpm-alpine
+
+WORKDIR /var/www
+
+RUN apk add --no-cache \
+    git curl zip unzip supervisor \
+    libpng-dev libjpeg-turbo-dev freetype-dev \
+    oniguruma-dev libxml2-dev mysql-client
+
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+COPY my-app/ /var/www
+
+RUN composer install --no-dev --optimize-autoloader
+
+RUN chown -R www-data:www-data /var/www
+RUN chmod -R 775 storage bootstrap/cache
+
+COPY docker/supervisor/worker.conf /etc/supervisor/conf.d/
+
+USER www-data
+
+CMD ["php-fpm"]

@@ -1,0 +1,30 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches:
+      - main
+      - dev-*
+
+jobs:
+  deploy:
+    if: github.ref_name == 'main' || startsWith(github.ref_name, 'dev-')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USER }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          script: |
+            cd /var/www/app
+            echo "${{ secrets.DEV_ENV_FILE }}" > .env
+
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+            docker compose -f docker-compose.dev.yml pull
+            docker compose -f docker-compose.dev.yml up -d
+
+            docker exec app php artisan migrate --force
+            docker exec app php artisan optimize:clear
+            
