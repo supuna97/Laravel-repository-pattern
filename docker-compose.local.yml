@@ -24,11 +24,10 @@ services:
   mysql:
     image: mysql:8
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: Admindev@1234
+      MYSQL_DATABASE: test_api
     ports:
       - "3307:3306"
 
   redis:
     image: redis:alpine
-    
